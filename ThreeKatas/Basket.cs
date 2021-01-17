@@ -38,7 +38,9 @@ namespace ThreeKatas
 
         public object Count25PercentDiscount(int numberOfBooks)
         {
-            throw new NotImplementedException();
+            var sum = numberOfBooks * price;
+            var discount = sum * 0.25;
+            return sum - discount;
         }
     }
 }
