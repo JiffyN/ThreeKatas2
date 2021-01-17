@@ -17,10 +17,8 @@ namespace HarryPotterKata.Tests
         public void Count5PercDisc_TwoDiffBooksInBasket_ReturnCorrectSum()
         {
             var basket = new Basket();
-            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
-            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
 
-            var result = basket.Count5PercentDiscount(basket.Books.Count);
+            var result = basket.Count5PercentDiscount(2);
 
             Assert.That(result, Is.EqualTo(15.2));
         }
@@ -28,11 +26,8 @@ namespace HarryPotterKata.Tests
         public void Count10PercDisc_ThreeDiffBooksInBasket_ReturnCorrectSum()
         {
             var basket = new Basket();
-            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
-            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
-            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
 
-            var result = basket.Count10PercentDiscount(basket.Books.Count);
+            var result = basket.Count10PercentDiscount(3);
 
             Assert.That(result, Is.EqualTo(21.6));
         }
@@ -41,12 +36,8 @@ namespace HarryPotterKata.Tests
         public void Count20PercDisc_FourDiffBooksInBasket_ReturnCorrectSum()
         {
             var basket = new Basket();
-            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
-            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
-            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
-            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
 
-            var result = basket.Count20PercentDiscount(basket.Books.Count);
+            var result = basket.Count20PercentDiscount(4);
 
             Assert.That(result, Is.EqualTo(25.6));
         }
@@ -54,16 +45,12 @@ namespace HarryPotterKata.Tests
         public void Count25PercDisc_FiveDiffBooksInBasket_ReturnCorrectSum()
         {
             var basket = new Basket();
-            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
-            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
-            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
-            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
-            basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
-
-            var result = basket.Count25PercentDiscount(basket.Books.Count);
+            
+            var result = basket.Count25PercentDiscount(5);
 
             Assert.That(result, Is.EqualTo(30));
         }
         
+
     }
 }
