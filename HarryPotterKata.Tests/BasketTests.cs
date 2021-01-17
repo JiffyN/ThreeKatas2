@@ -5,7 +5,7 @@ using ThreeKatas;
 namespace HarryPotterKata.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    class BasketTests
     {
         [Test]
         public void Count5PercDisc_TwoDiffBooksInBasket_ReturnCorrectSum()
@@ -14,7 +14,7 @@ namespace HarryPotterKata.Tests
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
 
-            var result = basket.Count5PercentDiscount();
+            var result = basket.Count5PercentDiscount(basket.Books.Count);
 
             Assert.That(result, Is.EqualTo(15.2));
         }

@@ -8,14 +8,17 @@ namespace ThreeKatas
 {
     public class Basket
     {
+        public const double price = 8;
         public List<Book> Books { get; set; }
         public Basket()
         {
             Books = new List<Book>();
         }
-        public double Count5PercentDiscount()
+        public double Count5PercentDiscount(int numberOfBooks)
         {
-            throw new NotImplementedException();
+            var sum = numberOfBooks * price;
+            var discount = sum * 0.05;
+            return sum - discount;
         }
     }
 }
