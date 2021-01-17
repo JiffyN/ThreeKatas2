@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework.Internal.Execution;
 
 namespace ThreeKatas
 {
@@ -19,6 +20,11 @@ namespace ThreeKatas
             var sum = numberOfBooks * price;
             var discount = sum * 0.05;
             return sum - discount;
+        }
+
+        public double Count10PercentDiscount(int numberOfBooks)
+        {
+            throw new NotImplementedException();
         }
     }
 }
