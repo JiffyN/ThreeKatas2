@@ -36,5 +36,19 @@ namespace HarryPotterKata.Tests
 
             Assert.That(result, Is.EqualTo(21.6));
         }
+
+        [Test]
+        public void Count15PercDisc_TwoDiffBooksInBasket_ReturnCorrectSum()
+        {
+            var basket = new Basket();
+            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
+            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
+            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
+            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
+
+            var result = basket.Count15PercentDiscount(basket.Books.Count);
+
+            Assert.That(result, Is.EqualTo(27.2));
+        }
     }
 }
