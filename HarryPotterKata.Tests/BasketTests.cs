@@ -50,7 +50,16 @@ namespace HarryPotterKata.Tests
 
             Assert.That(result, Is.EqualTo(30));
         }
-        
+        [Test]
+        public void CountTotalSum_TwoEqualBooksInBasket_ReturnCorrectTotalSum()
+        {
+            var basket = new Basket();
+            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
+            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
 
+            var result = basket.CountTotalSum(basket);
+
+            Assert.That(result, Is.EqualTo(16));
+        }
     }
 }

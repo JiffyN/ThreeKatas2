@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework.Internal.Execution;
+using NUnit.Framework;
 
 namespace ThreeKatas
 {
@@ -43,5 +43,9 @@ namespace ThreeKatas
             return sum - discount;
         }
         
+        public double CountTotalSum(Basket basket)
+        {
+            throw new NotImplementedException();
+        }
     }
-}
+    }
