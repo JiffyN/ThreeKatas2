@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,10 @@ namespace ThreeKatas
     public class Basket
     {
         public const double price = 8;
-        public List<Book> Books { get; set; }
+        public LinkedList<Book> Books { get; set; }
         public Basket()
         {
-            Books = new List<Book>();
+            Books = new LinkedList<Book>();
         }
         public double Count5PercentDiscount(int numberOfBooks)
         {
@@ -45,7 +46,23 @@ namespace ThreeKatas
         
         public double CountTotalSum(Basket basket)
         {
-            throw new NotImplementedException();
+            double totalSum = 0;
+            List<Book> diffBooks = new List<Book>();
+            diffBooks.Add(basket.Books.First.Value);
+            if (!basket.Books.First.Value.Title.Equals(basket.Books.First.Next.Value.Title))
+            {
+                diffBooks.Add(basket.Books.First.Next.Value);
+            }
+            else
+            {
+                totalSum = price * basket.Books.Count;
+            }
+            if (diffBooks.Count == 2)
+            {
+                totalSum = Count5PercentDiscount(diffBooks.Count);
+            }
+
+            return totalSum;
         }
     }
-    }
+}
