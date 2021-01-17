@@ -29,18 +29,19 @@ namespace ThreeKatas
             return sum - discount;
         }
 
-        public object Count20PercentDiscount(int numberOfBooks)
+        public double Count20PercentDiscount(int numberOfBooks)
         {
             var sum = numberOfBooks * price;
             var discount = sum * 0.2;
             return sum - discount;
         }
 
-        public object Count25PercentDiscount(int numberOfBooks)
+        public double Count25PercentDiscount(int numberOfBooks)
         {
             var sum = numberOfBooks * price;
             var discount = sum * 0.25;
             return sum - discount;
         }
+        
     }
 }
