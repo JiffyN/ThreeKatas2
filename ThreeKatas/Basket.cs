@@ -46,22 +46,38 @@ namespace ThreeKatas
         
         public double CountTotalSum(Basket basket)
         {
-            double totalSum = 0;
-            List<Book> diffBooks = new List<Book>();
-            diffBooks.Add(basket.Books.First.Value);
-            if (!basket.Books.First.Value.Title.Equals(basket.Books.First.Next.Value.Title))
+            double totalSum;
+            List<Book> diffBooks = new List<Book>() { basket.Books.First.Value };
+            List<Book> equalBooks = new List<Book>() { basket.Books.First.Value };
+            
+            //diffBooks.Add(basket.Books.First.Value);
+            basket.Books.RemoveFirst();
+            for (int i = 0; i <= basket.Books.Count; i++)
             {
-                diffBooks.Add(basket.Books.First.Next.Value);
+                if (!diffBooks[i].Title.Equals(basket.Books.First.Value.Title))
+                {
+                    diffBooks.Add(basket.Books.First.Value);
+                }
+                else
+                {
+                    equalBooks.Add(basket.Books.First.Value);
+                }
+                basket.Books.RemoveFirst();
             }
-            else
+            switch (diffBooks.Count)
             {
-                totalSum = price * basket.Books.Count;
-            }
-            if (diffBooks.Count == 2)
-            {
-                totalSum = Count5PercentDiscount(diffBooks.Count);
+                case 2:
+                    totalSum = Count5PercentDiscount(diffBooks.Count);
+                    break;
+                case 3:
+                    totalSum = Count10PercentDiscount(diffBooks.Count);
+                    break;
+                default:
+                    totalSum = 0;
+                    break;
             }
 
+            totalSum += equalBooks.Count * price;
             return totalSum;
         }
     }
