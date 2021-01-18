@@ -54,7 +54,6 @@ namespace ThreeKatas
                                                      Title = g.Key,
                                                      Books = g.Select(b => b).ToList()
                                                  }).ToList();
-            
             while (listIsNotEmpty)
             {
                 if (listOfGroupedBooks.Count == 1)

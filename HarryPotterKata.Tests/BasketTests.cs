@@ -141,11 +141,20 @@ namespace HarryPotterKata.Tests
         }
 
         [Test]
-        public void CountTotalSum_EmptyBasket_ReturnArgumentNullExpeption()
+        public void CountTotalSum_EmptyBasket_ReturnArgumentNullException()
         {
             var basket = new Basket();
 
             Assert.That(() => basket.CountTotalSum(basket), Throws.ArgumentNullException);
+        }
+
+        [Test]
+        public void CountTotalSum_MoreThanFiveGroupsInBasket_ReturnMoreThanFiveGroupsException()
+        {
+            var basket = new Basket();
+
+            Assert.That(() => basket.CountTotalSum(basket), 
+                Throws.Exception.TypeOf<MoreThanFiveGroupsException>());
         }
     }
 }
