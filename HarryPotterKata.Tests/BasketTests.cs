@@ -14,7 +14,7 @@ namespace HarryPotterKata.Tests
         // Harry Potter and the Order of the Phoenix
         // Harry Potter and the Half-Blood Prince
         [Test]
-        public void Count5PercDisc_TwoDiffBooksInBasket_ReturnCorrectSum()
+        public void Count5PercDisc_TwoBooksArePassed_ReturnSumWithDisc()
         {
             var basket = new Basket();
 
@@ -23,7 +23,7 @@ namespace HarryPotterKata.Tests
             Assert.That(result, Is.EqualTo(15.2));
         }
         [Test]
-        public void Count10PercDisc_ThreeDiffBooksInBasket_ReturnCorrectSum()
+        public void Count10PercDisc_ThreeBooksArePassed_ReturnSumWithDisc()
         {
             var basket = new Basket();
 
@@ -33,7 +33,7 @@ namespace HarryPotterKata.Tests
         }
 
         [Test]
-        public void Count20PercDisc_FourDiffBooksInBasket_ReturnCorrectSum()
+        public void Count20PercDisc_FourBooksArePassed_ReturnSumWithDisc()
         {
             var basket = new Basket();
 
@@ -42,7 +42,7 @@ namespace HarryPotterKata.Tests
             Assert.That(result, Is.EqualTo(25.6));
         }
         [Test]
-        public void Count25PercDisc_FiveDiffBooksInBasket_ReturnCorrectSum()
+        public void Count25PercDisc_FiveBooksArePassed_ReturnSumWithDisc()
         {
             var basket = new Basket();
             
@@ -51,7 +51,7 @@ namespace HarryPotterKata.Tests
             Assert.That(result, Is.EqualTo(30.0));
         }
         [Test]
-        public void CountTotalSum_TwoEqualBooksInBasket_ReturnCorrectTotalSum()
+        public void CountTotalSum_TwoEqualBooksInBasket_ReturnSumWithoutDisc()
         {
             var basket = new Basket();
             basket.Books.AddFirst(new Book("Harry Potter and the Sorcerer’s Stone"));
@@ -62,7 +62,7 @@ namespace HarryPotterKata.Tests
             Assert.That(result, Is.EqualTo(16.0));
         }
         [Test]
-        public void CountTotalSum_TwoDiffBooksInBasket_ReturnCorrectTotalSum()
+        public void CountTotalSum_TwoDiffBooksInBasket_ReturnSumWithDisc()
         {
             var basket = new Basket();
             basket.Books.AddFirst(new Book("Harry Potter and the Sorcerer’s Stone"));
@@ -71,6 +71,18 @@ namespace HarryPotterKata.Tests
             var result = basket.CountTotalSum(basket);
 
             Assert.That(result, Is.EqualTo(15.2));
+        }
+        [Test]
+        public void CountTotalSum_ThreeDiffBooksInBasket_ReturnSumWithDisc()
+        {
+            var basket = new Basket();
+            basket.Books.AddFirst(new Book("Harry Potter and the Sorcerer’s Stone"));
+            basket.Books.AddFirst(new Book("Harry Potter and the Chamber of Secrets"));
+            basket.Books.AddFirst(new Book("Harry Potter and the Half-Blood Prince"));
+
+            var result = basket.CountTotalSum(basket);
+
+            Assert.That(result, Is.EqualTo(21.6));
         }
     }
 }
