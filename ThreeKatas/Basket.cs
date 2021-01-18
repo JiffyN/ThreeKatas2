@@ -47,7 +47,7 @@ namespace ThreeKatas
         public double CountTotalSum(Basket basket)
         {
             double totalSum = 0;
-            List<string> diffBooks = new List<string>() { };
+            bool listIsNotEmpty = true;
             var list = basket.Books.GroupBy(b => b.Title).Select(g => 
                 new
                 {
@@ -55,24 +55,31 @@ namespace ThreeKatas
                     Count = g.Count(),
                     Books = g.Select(b => b).ToList()
                 }).ToList();
-            foreach (var g in list)
+            if (list.Count == 1)
             {
-                if (list.Count == 1)
+                foreach (var g in list)
                 {
-                    totalSum = g.Books.Count * price;
-                    break;
-                }
-                if (!diffBooks.Contains(g.Title))
-                {
-                    diffBooks.Add(g.Title);
-                    g.Books.Remove(g.Books.First());
+                    return g.Books.Count * price;
                 }
             }
-            if(diffBooks.Count == 2)
-               totalSum += Count5PercentDiscount(diffBooks.Count);
-            else if(diffBooks.Count == 3)
-                totalSum += Count10PercentDiscount(diffBooks.Count);
-            
+            while (listIsNotEmpty)
+            {
+                if (list.Count > 0)
+                {
+                    if (list.Count == 2)
+                        totalSum += Count5PercentDiscount(list.Count);
+                    else if (list.Count == 3)
+                        totalSum += Count10PercentDiscount(list.Count);
+                    foreach (var g in list.ToList())
+                    {
+                        g.Books.Remove(g.Books.First());
+                        if (g.Books.Count == 0)
+                            list.Remove(g);
+                    }
+                }
+                if (list.Count == 0)
+                    listIsNotEmpty = false;
+            }
             return totalSum;
         }
     }
