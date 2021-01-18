@@ -139,5 +139,13 @@ namespace HarryPotterKata.Tests
 
             Assert.That(result, Is.EqualTo(33.6));
         }
+
+        [Test]
+        public void CountTotalSum_EmptyBasket_ReturnArgumentNullExpeption()
+        {
+            var basket = new Basket();
+
+            Assert.That(() => basket.CountTotalSum(basket), Throws.ArgumentNullException);
+        }
     }
 }
