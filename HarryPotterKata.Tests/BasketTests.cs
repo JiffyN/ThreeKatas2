@@ -152,6 +152,12 @@ namespace HarryPotterKata.Tests
         public void CountTotalSum_MoreThanFiveGroupsInBasket_ReturnMoreThanFiveGroupsException()
         {
             var basket = new Basket();
+            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
+            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
+            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
+            basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
+            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
+            basket.Books.Add(new Book("Harry Potter and the Deathly Hallows"));
 
             Assert.That(() => basket.CountTotalSum(basket), 
                 Throws.Exception.TypeOf<MoreThanFiveGroupsException>());

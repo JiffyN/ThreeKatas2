@@ -54,6 +54,10 @@ namespace ThreeKatas
                                                      Title = g.Key,
                                                      Books = g.Select(b => b).ToList()
                                                  }).ToList();
+            if (listOfGroupedBooks.Count > 5)
+            {
+                throw new MoreThanFiveGroupsException("There are more than 5 groups of books in the basket");
+            }
             while (listIsNotEmpty)
             {
                 if (listOfGroupedBooks.Count == 1)
