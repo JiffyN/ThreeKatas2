@@ -11,10 +11,10 @@ namespace ThreeKatas
     public class Basket
     {
         public const double price = 8;
-        public LinkedList<Book> Books { get; set; }
+        public List<Book> Books { get; set; }
         public Basket()
         {
-            Books = new LinkedList<Book>();
+            Books = new List<Book>();
         }
         public double Count5PercentDiscount(int numberOfBooks)
         {
@@ -46,38 +46,33 @@ namespace ThreeKatas
         
         public double CountTotalSum(Basket basket)
         {
-            double totalSum;
-            List<Book> diffBooks = new List<Book>() { basket.Books.First.Value };
-            List<Book> equalBooks = new List<Book>() { basket.Books.First.Value };
+            double totalSum = 0;
+            List<string> diffBooks = new List<string>() { };
+            var list = basket.Books.GroupBy(b => b.Title).Select(g => 
+                new
+                {
+                    Title = g.Key,
+                    Count = g.Count(),
+                    Books = g.Select(b => b).ToList()
+                }).ToList();
+            foreach (var g in list)
+            {
+                if (list.Count == 1)
+                {
+                    totalSum = g.Books.Count * price;
+                    break;
+                }
+                if (!diffBooks.Contains(g.Title))
+                {
+                    diffBooks.Add(g.Title);
+                    g.Books.Remove(g.Books.First());
+                }
+            }
+            if(diffBooks.Count == 2)
+               totalSum += Count5PercentDiscount(diffBooks.Count);
+            else if(diffBooks.Count == 3)
+                totalSum += Count10PercentDiscount(diffBooks.Count);
             
-            //diffBooks.Add(basket.Books.First.Value);
-            basket.Books.RemoveFirst();
-            for (int i = 0; i <= basket.Books.Count; i++)
-            {
-                if (!diffBooks[i].Title.Equals(basket.Books.First.Value.Title))
-                {
-                    diffBooks.Add(basket.Books.First.Value);
-                }
-                else
-                {
-                    equalBooks.Add(basket.Books.First.Value);
-                }
-                basket.Books.RemoveFirst();
-            }
-            switch (diffBooks.Count)
-            {
-                case 2:
-                    totalSum = Count5PercentDiscount(diffBooks.Count);
-                    break;
-                case 3:
-                    totalSum = Count10PercentDiscount(diffBooks.Count);
-                    break;
-                default:
-                    totalSum = 0;
-                    break;
-            }
-
-            totalSum += equalBooks.Count * price;
             return totalSum;
         }
     }
