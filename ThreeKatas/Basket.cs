@@ -52,31 +52,32 @@ namespace ThreeKatas
                 new
                 {
                     Title = g.Key,
-                    Count = g.Count(),
                     Books = g.Select(b => b).ToList()
                 }).ToList();
-            if (list.Count == 1)
-            {
-                foreach (var g in list)
-                {
-                    return g.Books.Count * price;
-                }
-            }
+            
             while (listIsNotEmpty)
             {
-                if (list.Count > 0)
+                if (list.Count == 1)
                 {
-                    if (list.Count == 2)
-                        totalSum += Count5PercentDiscount(list.Count);
-                    else if (list.Count == 3)
-                        totalSum += Count10PercentDiscount(list.Count);
-                    foreach (var g in list.ToList())
+                    foreach (var g in list)
                     {
-                        g.Books.Remove(g.Books.First());
-                        if (g.Books.Count == 0)
-                            list.Remove(g);
+                        totalSum += g.Books.Count * price;
+                        return totalSum;
                     }
                 }
+                else if (list.Count == 2)
+                    totalSum += Count5PercentDiscount(list.Count);
+                else if (list.Count == 3)
+                    totalSum += Count10PercentDiscount(list.Count);
+                else if (list.Count == 4)
+                    totalSum += Count20PercentDiscount(list.Count);
+                foreach (var g in list.ToList())
+                {
+                    g.Books.Remove(g.Books.First());
+                    if (g.Books.Count == 0)
+                        list.Remove(g);
+                }
+                
                 if (list.Count == 0)
                     listIsNotEmpty = false;
             }
