@@ -98,7 +98,7 @@ namespace HarryPotterKata.Tests
         }
 
         [Test]
-        public void CountTotalSum_FourEqualBooks_ReturnSumWithDisc20Percent()
+        public void CountTotalSum_FourDiffBooks_ReturnSumWithDisc20Percent()
         {
             var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
@@ -109,6 +109,21 @@ namespace HarryPotterKata.Tests
             var result = basket.CountTotalSum(basket);
 
             Assert.That(result, Is.EqualTo(25.6));
+        }
+
+        [Test]
+        public void CountTotalSum_FiveDiffBooks_ReturnSumWithDisc25Percent()
+        {
+            var basket = new Basket();
+            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
+            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
+            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
+            basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
+            basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
+
+            var result = basket.CountTotalSum(basket);
+
+            Assert.That(result, Is.EqualTo(30.0));
         }
 
     }

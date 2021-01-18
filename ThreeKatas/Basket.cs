@@ -71,6 +71,8 @@ namespace ThreeKatas
                     totalSum += Count10PercentDiscount(list.Count);
                 else if (list.Count == 4)
                     totalSum += Count20PercentDiscount(list.Count);
+                else if (list.Count == 5)
+                    totalSum += Count25PercentDiscount(list.Count);
                 foreach (var g in list.ToList())
                 {
                     g.Books.Remove(g.Books.First());
