@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
 
 namespace ThreeKatas
 {
@@ -48,39 +43,38 @@ namespace ThreeKatas
         {
             double totalSum = 0;
             bool listIsNotEmpty = true;
-            var list = basket.Books.GroupBy(b => b.Title).Select(g => 
-                new
-                {
-                    Title = g.Key,
-                    Books = g.Select(b => b).ToList()
-                }).ToList();
+            var listOfGroupedBooks = basket.Books.GroupBy(b => b.Title)
+                                                 .Select(g => new 
+                                                 {
+                                                     Title = g.Key,
+                                                     Books = g.Select(b => b).ToList()
+                                                 }).ToList();
             
             while (listIsNotEmpty)
             {
-                if (list.Count == 1)
+                if (listOfGroupedBooks.Count == 1)
                 {
-                    foreach (var g in list)
+                    foreach (var g in listOfGroupedBooks)
                     {
                         totalSum += g.Books.Count * price;
                         return totalSum;
                     }
                 }
-                else if (list.Count == 2)
-                    totalSum += Count5PercentDiscount(list.Count);
-                else if (list.Count == 3)
-                    totalSum += Count10PercentDiscount(list.Count);
-                else if (list.Count == 4)
-                    totalSum += Count20PercentDiscount(list.Count);
-                else if (list.Count == 5)
-                    totalSum += Count25PercentDiscount(list.Count);
-                foreach (var g in list.ToList())
+                else if (listOfGroupedBooks.Count == 2)
+                    totalSum += Count5PercentDiscount(listOfGroupedBooks.Count);
+                else if (listOfGroupedBooks.Count == 3)
+                    totalSum += Count10PercentDiscount(listOfGroupedBooks.Count);
+                else if (listOfGroupedBooks.Count == 4)
+                    totalSum += Count20PercentDiscount(listOfGroupedBooks.Count);
+                else if (listOfGroupedBooks.Count == 5)
+                    totalSum += Count25PercentDiscount(listOfGroupedBooks.Count);
+                foreach (var g in listOfGroupedBooks.ToList())
                 {
                     g.Books.Remove(g.Books.First());
                     if (g.Books.Count == 0)
-                        list.Remove(g);
+                        listOfGroupedBooks.Remove(g);
                 }
-                
-                if (list.Count == 0)
+                if (listOfGroupedBooks.Count == 0)
                     listIsNotEmpty = false;
             }
             return totalSum;

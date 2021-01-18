@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ThreeKatas;
 
 namespace HarryPotterKata.Tests
@@ -138,8 +137,7 @@ namespace HarryPotterKata.Tests
 
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(37.6));
+            Assert.That(result, Is.EqualTo(33.6));
         }
-
     }
 }
