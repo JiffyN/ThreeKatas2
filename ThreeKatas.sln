@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarryPotterKata", "ThreeKat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarryPotterKata.Tests", "HarryPotterKata.Tests\HarryPotterKata.Tests.csproj", "{E96238CE-D4B9-4FFA-B172-B90218AA1717}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzKata", "FizzBuzzKata\FizzBuzzKata.csproj", "{FACC6253-A2C4-48FB-B056-3C157CA63FDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzKata.Tests", "FizzBuzzKata.Tests\FizzBuzzKata.Tests.csproj", "{EACEA11E-92E2-4C9F-911F-362689093F81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACC6253-A2C4-48FB-B056-3C157CA63FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACC6253-A2C4-48FB-B056-3C157CA63FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACC6253-A2C4-48FB-B056-3C157CA63FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACC6253-A2C4-48FB-B056-3C157CA63FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACEA11E-92E2-4C9F-911F-362689093F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACEA11E-92E2-4C9F-911F-362689093F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACEA11E-92E2-4C9F-911F-362689093F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACEA11E-92E2-4C9F-911F-362689093F81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
