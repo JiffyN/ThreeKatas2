@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarryPotterKata", "ThreeKat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarryPotterKata.Tests", "HarryPotterKata.Tests\HarryPotterKata.Tests.csproj", "{E96238CE-D4B9-4FFA-B172-B90218AA1717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzKata", "FizzBuzzKata\FizzBuzzKata.csproj", "{9A545A79-2D22-4662-9846-29C93EAE659A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E96238CE-D4B9-4FFA-B172-B90218AA1717}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A545A79-2D22-4662-9846-29C93EAE659A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A545A79-2D22-4662-9846-29C93EAE659A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A545A79-2D22-4662-9846-29C93EAE659A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A545A79-2D22-4662-9846-29C93EAE659A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
