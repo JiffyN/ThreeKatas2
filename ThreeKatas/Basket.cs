@@ -42,6 +42,10 @@ namespace ThreeKatas
         
         public double CountTotalSum(Basket basket)
         {
+            if (basket.Books.Count == 0)
+            {
+                throw new ArgumentNullException("The basket is empty");
+            }
             double totalSum = 0;
             bool listIsNotEmpty = true;
             var listOfGroupedBooks = basket.Books.GroupBy(b => b.Title)
