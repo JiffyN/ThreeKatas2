@@ -41,5 +41,12 @@ namespace PrimeCompositeKata.Tests
             Assert.That(() => PrimeComposite.GetOutput(0),
                 Throws.Exception.TypeOf<ValueIsNotInRangeException>());
         }
+        [Test]
+        public void FizzBuzzMethod_ValueIsEqualToOne_ReturnTheSameNumber()
+        {
+            var result = PrimeComposite.GetOutput(1);
+
+            Assert.That(result, Is.EqualTo("1"));
+        }
     }
 }
