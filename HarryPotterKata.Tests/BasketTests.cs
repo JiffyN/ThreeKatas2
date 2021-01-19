@@ -170,10 +170,23 @@ namespace HarryPotterKata.Tests
         {
             var expected = new List<(string title, List<Book> books)>
             {
-                ("Harry Potter and the Chamber of Secrets", new List<Book>(1)),
-                ("Harry Potter and the Prisoner of Azkaban", new List<Book>(1)),
-                ("Harry Potter and the Goblet of Fire", new List<Book>(1)),
-                ("Harry Potter and the Order of the Phoenix", new List<Book>(2)),
+                ("Harry Potter and the Chamber of Secrets", new List<Book>()
+                {
+                    new Book("Harry Potter and the Chamber of Secrets")
+                }),
+                ("Harry Potter and the Prisoner of Azkaban", new List<Book>()
+                {
+                    new Book("Harry Potter and the Prisoner of Azkaban")
+                }),
+                ("Harry Potter and the Goblet of Fire", new List<Book>()
+                {
+                    new Book("Harry Potter and the Goblet of Fire")
+                }),
+                ("Harry Potter and the Order of the Phoenix", new List<Book>()
+                {
+                    new Book("Harry Potter and the Order of the Phoenix"),
+                    new Book("Harry Potter and the Order of the Phoenix")
+                }),
             };
 
             var basket = new Basket();
@@ -188,7 +201,7 @@ namespace HarryPotterKata.Tests
             foreach (var valueTuple in result)
             {
                 var expectedValue = expected.Single(_ => _.title == valueTuple.Item1);
-                Assert.That(expectedValue.books, Is.EqualTo(valueTuple.Item2));
+                CollectionAssert.AreEquivalent(expectedValue.books, valueTuple.Item2);
             }
         }
     }

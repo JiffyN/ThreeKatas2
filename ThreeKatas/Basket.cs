@@ -48,12 +48,7 @@ namespace ThreeKatas
             }
             double totalSum = 0;
             bool listIsNotEmpty = true;
-            var listOfGroupedBooks = basket.Books.GroupBy(b => b.Title)
-                                                 .Select(g => new 
-                                                 {
-                                                     Title = g.Key,
-                                                     Books = g.Select(b => b).ToList()
-                                                 }).ToList();
+            var listOfGroupedBooks = ReturnBooksGroupedByTitle(basket.Books).ToList();
             if (listOfGroupedBooks.Count > 5)
             {
                 throw new MoreThanFiveGroupsException("There are more than 5 groups of books in the basket");
@@ -64,7 +59,7 @@ namespace ThreeKatas
                 {
                     foreach (var g in listOfGroupedBooks)
                     {
-                        totalSum += g.Books.Count * price;
+                        totalSum += g.Item2.Count * price;
                         return totalSum;
                     }
                 }
@@ -78,8 +73,8 @@ namespace ThreeKatas
                     totalSum += Count25PercentDiscount(listOfGroupedBooks.Count);
                 foreach (var g in listOfGroupedBooks.ToList())
                 {
-                    g.Books.Remove(g.Books.First());
-                    if (g.Books.Count == 0)
+                    g.Item2.Remove(g.Item2.First());
+                    if (g.Item2.Count == 0)
                         listOfGroupedBooks.Remove(g);
                 }
                 if (listOfGroupedBooks.Count == 0)
@@ -90,7 +85,11 @@ namespace ThreeKatas
 
         public IEnumerable<(string, List<Book>)> ReturnBooksGroupedByTitle(List<Book> books)
         {
-            throw new NotImplementedException();
+            return books.GroupBy(b => b.Title).Select(g => 
+                (
+                    g.Key,
+                    g.Select(b => b).ToList()
+                ));
         }
     }
 }
