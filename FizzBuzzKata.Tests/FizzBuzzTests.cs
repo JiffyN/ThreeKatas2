@@ -20,6 +20,13 @@ namespace FizzBuzzKata.Tests
             Assert.That(result, Is.EqualTo("Fizz"));
         }
         [Test]
+        public void FizzBuzzMethod_NumberDivisibleByFive_ReturnBuzz()
+        {
+            var result = FizzBuzz.FizzBuzzMethod(10);
+
+            Assert.That(result, Is.EqualTo("Buzz"));
+        }
+        [Test]
         public void FizzBuzzMethod_NumberNotDivisibleBothByThreeOrFive_ReturnTheSameNumber()
         {
             var result = FizzBuzz.FizzBuzzMethod(4);
