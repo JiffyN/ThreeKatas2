@@ -49,10 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EvenCompositeNumberException.cs" />
     <Compile Include="PrimeComposite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueIsNotInRangeException.cs" />
+    <Compile Include="ValueIsNotOfIntTypeException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

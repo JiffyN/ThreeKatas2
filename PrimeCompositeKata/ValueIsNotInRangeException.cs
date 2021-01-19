@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PrimeCompositeKata
 {
-    public class EvenCompositeNumberException : Exception
+    public class ValueIsNotInRangeException : Exception
     {
-        public EvenCompositeNumberException(string message) : base(message)
+        public ValueIsNotInRangeException(string message) : base(message)
         {
             
         }

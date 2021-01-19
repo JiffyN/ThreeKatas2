@@ -20,12 +20,19 @@ namespace PrimeCompositeKata.Tests
 
             Assert.That(result, Is.EqualTo("Composite"));
         }
+        
+        [Test]
+        public void GetOutput_StringValue_ThrowValueIsNotOfIntTypeException()
+        {
+            Assert.That(() => PrimeComposite.GetOutput<string>("f"),
+                Throws.Exception.TypeOf<ValueIsNotOfIntTypeException>());
+        }
 
         [Test]
-        public void GetOutput_NumberIsCompositeAndEven_ThrowEvenCompositeNumberException()
+        public void FizzBuzzMethod_ValueIsMoreThanHundred_ThrowsValueIsNotInRangeException()
         {
-            Assert.That(() => PrimeComposite.GetOutput(8),
-                Throws.Exception.TypeOf<EvenCompositeNumberException>());
+            Assert.That(() => PrimeComposite.GetOutput(101),
+                Throws.Exception.TypeOf<ValueIsNotInRangeException>());
         }
     }
 }
