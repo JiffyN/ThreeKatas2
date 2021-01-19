@@ -42,9 +42,16 @@ namespace FizzBuzzKata.Tests
         }
 
         [Test]
-        public void FizzBuzzMethod_ValueIsMoreThanHundred_ThrowsException()
+        public void FizzBuzzMethod_ValueIsMoreThanHundred_ThrowsValueIsNotInRangeException()
         {
             Assert.That(() => FizzBuzz.FizzBuzzMethod<int>(101),
+                Throws.Exception.TypeOf<ValueIsNotInRangeException>());
+        }
+
+        [Test]
+        public void FizzBuzzMethod_ValueIsLessThanOne_ThrowsValueIsNotInRangeException()
+        {
+            Assert.That(() => FizzBuzz.FizzBuzzMethod<int>(0),
                 Throws.Exception.TypeOf<ValueIsNotInRangeException>());
         }
     }
