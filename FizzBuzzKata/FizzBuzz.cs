@@ -10,7 +10,9 @@ namespace FizzBuzzKata
     {
         public static string FizzBuzzMethod(int number)
         {
-            throw new NotImplementedException();
+            if (number % 3 != 0 && number % 5 != 0)
+                return number.ToString();
+            return number.ToString();
         }
     }
 }
