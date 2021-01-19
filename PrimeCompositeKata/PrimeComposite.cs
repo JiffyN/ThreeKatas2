@@ -10,8 +10,11 @@ namespace PrimeCompositeKata
             {
                 throw new ValueIsNotOfIntTypeException("Value can be only of integer type");
             }
-
             var number = Convert.ToInt32(input);
+            if (number > 100)
+            {
+                throw new ValueIsNotInRangeException("Value can be between 1 and 100");
+            }
             int count = 0;
             
             for (int i = 1; i <= number; i++)

@@ -34,5 +34,12 @@ namespace PrimeCompositeKata.Tests
             Assert.That(() => PrimeComposite.GetOutput(101),
                 Throws.Exception.TypeOf<ValueIsNotInRangeException>());
         }
+
+        [Test]
+        public void FizzBuzzMethod_ValueIsLessThanOne_ThrowsValueIsNotInRangeException()
+        {
+            Assert.That(() => PrimeComposite.GetOutput(0),
+                Throws.Exception.TypeOf<ValueIsNotInRangeException>());
+        }
     }
 }
