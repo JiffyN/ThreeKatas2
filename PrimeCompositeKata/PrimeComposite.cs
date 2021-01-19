@@ -6,10 +6,17 @@ namespace PrimeCompositeKata
     {
         public static string GetOutput(int input)
         {
-            if (input % input == 0 || input % 1 == 0)
+            int count = 0;
+            
+            for (int i = 1; i <= input; i++)
+                if (input % i == 0)
+                    count++;
+            if (count == 2)
                 return "Prime";
-
-            return null;
+            if(count > 2 && input % 2 != 0)
+                return "Composite";
+            
+            return input.ToString();
         }
     }
 }

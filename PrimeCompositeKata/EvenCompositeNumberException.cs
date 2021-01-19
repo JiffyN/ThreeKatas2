@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PrimeCompositeKata
 {
-    class Program
+    public class EvenCompositeNumberException : Exception
     {
-        static void Main(string[] args)
+        public EvenCompositeNumberException(string message) : base(message)
         {
+            
         }
     }
-    
 }
