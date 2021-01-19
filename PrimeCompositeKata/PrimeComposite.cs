@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace PrimeCompositeKata
 {
@@ -7,7 +6,10 @@ namespace PrimeCompositeKata
     {
         public static string GetOutput(int input)
         {
-            throw new NotImplementedException();
+            if (input % input == 0 || input % 1 == 0)
+                return "Prime";
+
+            return null;
         }
     }
 }
