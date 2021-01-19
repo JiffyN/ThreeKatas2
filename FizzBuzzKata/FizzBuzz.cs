@@ -12,6 +12,10 @@ namespace FizzBuzzKata
                 throw new NonIntTypeException("Value can be only an integer");
             }
             number = Convert.ToInt32(input);
+
+            if (number > 100)
+                throw new ValueIsNotInRangeException("Value can be only between 1 and 100");
+
             if (number % 3 == 0 && number % 5 == 0)
                 return "FizzBuzz";
 
