@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzKata.Tests", "FizzB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCompositeKata", "PrimeCompositeKata\PrimeCompositeKata.csproj", "{1982ED52-185F-4363-9B18-5CBEF1A579D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCompositeKata.Tests", "PrimeCompositeKata.Tests\PrimeCompositeKata.Tests.csproj", "{6BDDBF24-6A4C-4CE6-B934-E8BB3E72EFB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1982ED52-185F-4363-9B18-5CBEF1A579D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1982ED52-185F-4363-9B18-5CBEF1A579D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1982ED52-185F-4363-9B18-5CBEF1A579D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BDDBF24-6A4C-4CE6-B934-E8BB3E72EFB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDDBF24-6A4C-4CE6-B934-E8BB3E72EFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDDBF24-6A4C-4CE6-B934-E8BB3E72EFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDDBF24-6A4C-4CE6-B934-E8BB3E72EFB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
