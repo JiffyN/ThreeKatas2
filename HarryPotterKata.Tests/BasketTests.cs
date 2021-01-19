@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using ThreeKatas;
 
 namespace HarryPotterKata.Tests
@@ -161,6 +163,33 @@ namespace HarryPotterKata.Tests
 
             Assert.That(() => basket.CountTotalSum(basket), 
                 Throws.Exception.TypeOf<MoreThanFiveGroupsException>());
+        }
+
+        [Test]
+        public void ReturnBooksGroupedByTitle_WhenCalled_ReturnListOfBooksGroupedByTitle()
+        {
+            var expected = new List<(string title, List<Book> books)>
+            {
+                ("Harry Potter and the Chamber of Secrets", new List<Book>(1)),
+                ("Harry Potter and the Prisoner of Azkaban", new List<Book>(1)),
+                ("Harry Potter and the Goblet of Fire", new List<Book>(1)),
+                ("Harry Potter and the Order of the Phoenix", new List<Book>(2)),
+            };
+
+            var basket = new Basket();
+            basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
+            basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
+            basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
+            basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
+            basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
+
+            var result = basket.ReturnBooksGroupedByTitle(basket.Books).ToList();
+
+            foreach (var valueTuple in result)
+            {
+                var expectedValue = expected.Single(_ => _.title == valueTuple.Item1);
+                Assert.That(expectedValue.books, Is.EqualTo(valueTuple.Item2));
+            }
         }
     }
 }

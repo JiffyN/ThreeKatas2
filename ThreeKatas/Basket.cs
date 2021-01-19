@@ -87,5 +87,10 @@ namespace ThreeKatas
             }
             return totalSum;
         }
+
+        public IEnumerable<(string, List<Book>)> ReturnBooksGroupedByTitle(List<Book> books)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
