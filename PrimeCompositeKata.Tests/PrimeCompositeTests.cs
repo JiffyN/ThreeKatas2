@@ -12,5 +12,13 @@ namespace PrimeCompositeKata.Tests
 
             Assert.That(result, Is.EqualTo("Prime"));
         }
+
+        [Test]
+        public void GetOutput_NumberIsCompositeAndOdd_ReturnComposite()
+        {
+            var result = PrimeComposite.GetOutput(9);
+
+            Assert.That(result, Is.EqualTo("Composite"));
+        }
     }
 }
