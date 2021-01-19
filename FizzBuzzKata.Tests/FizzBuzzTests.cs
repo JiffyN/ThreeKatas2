@@ -35,10 +35,17 @@ namespace FizzBuzzKata.Tests
         }
 
         [Test]
-        public void FizzBuzzMethod_NotIntValue_ThrowException()
+        public void FizzBuzzMethod_NotIntValue_ThrowNonIntTypeException()
         {
             Assert.That(() => FizzBuzz.FizzBuzzMethod<string>("f"), 
                 Throws.Exception.TypeOf<NonIntTypeException>());
+        }
+
+        [Test]
+        public void FizzBuzzMethod_ValueIsMoreThanHundred_ThrowsException()
+        {
+            Assert.That(() => FizzBuzz.FizzBuzzMethod<int>(101),
+                Throws.Exception.TypeOf<ValueIsNotInRangeException>());
         }
     }
 }
