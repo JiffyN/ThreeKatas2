@@ -1,43 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("HarryPotterKata.Tests")]
 namespace ThreeKatas
 {
-    public class Basket
+    class Basket
     {
-        public const double price = 8;
+        private const double price = 8;
+
+        private Dictionary<int, int> booksToPercentMap = new Dictionary<int, int>()
+        {
+            {1, 0},
+            {2, 5},
+            {3, 10},
+            {4, 20},
+            {5, 25}
+        };
         public List<Book> Books { get; set; }
         public Basket()
         {
             Books = new List<Book>();
         }
-        public double Count5PercentDiscount(int numberOfBooks)
+        internal double CountPercentDiscount(int numberOfBooks, double discount)
         {
             var sum = numberOfBooks * price;
-            var discount = sum * 0.05;
-            return sum - discount;
-        }
-
-        public double Count10PercentDiscount(int numberOfBooks)
-        {
-            var sum = numberOfBooks * price;
-            var discount = sum * 0.1;
-            return sum - discount;
-        }
-
-        public double Count20PercentDiscount(int numberOfBooks)
-        {
-            var sum = numberOfBooks * price;
-            var discount = sum * 0.2;
-            return sum - discount;
-        }
-
-        public double Count25PercentDiscount(int numberOfBooks)
-        {
-            var sum = numberOfBooks * price;
-            var discount = sum * 0.25;
-            return sum - discount;
+            var discountSum = sum * (discount / 100);
+            return sum - discountSum;
         }
         
         public double CountTotalSum(Basket basket)
@@ -55,22 +46,7 @@ namespace ThreeKatas
             }
             while (listIsNotEmpty)
             {
-                if (listOfGroupedBooks.Count == 1)
-                {
-                    foreach (var g in listOfGroupedBooks)
-                    {
-                        totalSum += g.Item2.Count * price;
-                        return totalSum;
-                    }
-                }
-                else if (listOfGroupedBooks.Count == 2)
-                    totalSum += Count5PercentDiscount(listOfGroupedBooks.Count);
-                else if (listOfGroupedBooks.Count == 3)
-                    totalSum += Count10PercentDiscount(listOfGroupedBooks.Count);
-                else if (listOfGroupedBooks.Count == 4)
-                    totalSum += Count20PercentDiscount(listOfGroupedBooks.Count);
-                else if (listOfGroupedBooks.Count == 5)
-                    totalSum += Count25PercentDiscount(listOfGroupedBooks.Count);
+                totalSum += CountPercentDiscount(listOfGroupedBooks.Count, booksToPercentMap[listOfGroupedBooks.Count]);
                 foreach (var g in listOfGroupedBooks.ToList())
                 {
                     g.Item2.Remove(g.Item2.First());
@@ -82,14 +58,14 @@ namespace ThreeKatas
             }
             return totalSum;
         }
-
-        public IEnumerable<(string, List<Book>)> ReturnBooksGroupedByTitle(List<Book> books)
+        
+        internal List<(string, List<Book>)> ReturnBooksGroupedByTitle(List<Book> books)
         {
             return books.GroupBy(b => b.Title).Select(g => 
                 (
                     g.Key,
                     g.Select(b => b).ToList()
-                ));
+                )).ToList();
         }
     }
 }

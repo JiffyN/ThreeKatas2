@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Runtime.InteropServices;
+using NUnit.Framework;
 
 namespace PrimeCompositeKata.Tests
 {
@@ -6,26 +7,14 @@ namespace PrimeCompositeKata.Tests
     public class PrimeCompositeTests
     {
         [Test]
-        public void GetOutput_NumberIsPrime_ReturnPrime()
+        [TestCase(5, "Prime")]
+        [TestCase(9, "Composite")]
+        [TestCase(1, "1")]
+        public void GetOutput_ValidNumber_ReturnValidResult(int number, string expectedResult)
         {
-            var result = PrimeComposite.GetOutput(5);
+            var result = PrimeComposite.GetOutput(number);
 
-            Assert.That(result, Is.EqualTo("Prime"));
-        }
-
-        [Test]
-        public void GetOutput_NumberIsCompositeAndOdd_ReturnComposite()
-        {
-            var result = PrimeComposite.GetOutput(9);
-
-            Assert.That(result, Is.EqualTo("Composite"));
-        }
-        
-        [Test]
-        public void GetOutput_StringValue_ThrowValueIsNotOfIntTypeException()
-        {
-            Assert.That(() => PrimeComposite.GetOutput<string>("f"),
-                Throws.Exception.TypeOf<ValueIsNotOfIntTypeException>());
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
@@ -40,13 +29,6 @@ namespace PrimeCompositeKata.Tests
         {
             Assert.That(() => PrimeComposite.GetOutput(0),
                 Throws.Exception.TypeOf<ValueIsNotInRangeException>());
-        }
-        [Test]
-        public void FizzBuzzMethod_ValueIsEqualToOne_ReturnTheSameNumber()
-        {
-            var result = PrimeComposite.GetOutput(1);
-
-            Assert.That(result, Is.EqualTo("1"));
         }
     }
 }

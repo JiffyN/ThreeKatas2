@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using NUnit.Framework;
 using ThreeKatas;
@@ -13,95 +15,74 @@ namespace HarryPotterKata.Tests
         // Harry Potter and the Prisoner of Azkaban
         // Harry Potter and the Goblet of Fire
         // Harry Potter and the Order of the Phoenix
-        [Test]
-        public void Count5PercDisc_TwoBooksArePassed_ReturnSumWithDisc()
+
+        private Basket basket;
+        [SetUp]
+        public void SetUp()
         {
-            var basket = new Basket();
-
-            var result = basket.Count5PercentDiscount(2);
-
-            Assert.That(result, Is.EqualTo(15.2));
-        }
-        [Test]
-        public void Count10PercDisc_ThreeBooksArePassed_ReturnSumWithDisc()
-        {
-            var basket = new Basket();
-
-            var result = basket.Count10PercentDiscount(3);
-
-            Assert.That(result, Is.EqualTo(21.6));
+            basket = new Basket();
         }
 
         [Test]
-        public void Count20PercDisc_FourBooksArePassed_ReturnSumWithDisc()
+        [TestCase(2, 5, 15.2)]
+        [TestCase(3, 10, 21.6)]
+        [TestCase(4, 20, 25.6)]
+        [TestCase(5, 25, 30.0)]
+        public void CountPercentDiscount_ValidNumberOfBooks_ReturnSumWithDisc(int numOfBooks, 
+                                                                              int discount, 
+                                                                              double expectedResult)
         {
-            var basket = new Basket();
+            var result = basket.CountPercentDiscount(numOfBooks, discount);
 
-            var result = basket.Count20PercentDiscount(4);
-
-            Assert.That(result, Is.EqualTo(25.6));
-        }
-        [Test]
-        public void Count25PercDisc_FiveBooksArePassed_ReturnSumWithDisc()
-        {
-            var basket = new Basket();
-            
-            var result = basket.Count25PercentDiscount(5);
-
-            Assert.That(result, Is.EqualTo(30.0));
+            Assert.AreEqual(expectedResult, result);
         }
         [Test]
         public void CountTotalSum_TwoEqualBooksInBasket_ReturnSumWithoutDisc()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
 
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(16.0));
+            Assert.AreEqual(16.0, result);
         }
         [Test]
         public void CountTotalSum_TwoDiffBooksInBasket_ReturnSumWithDisc5Perc()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
 
             var result = basket.CountTotalSum(basket);
-
-            Assert.That(result, Is.EqualTo(15.2));
+            
+            Assert.AreEqual(15.2, result);
         }
         [Test]
         public void CountTotalSum_ThreeDiffBooksInBasket_ReturnSumWithDisc10Perc()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
 
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(21.6));
+            Assert.AreEqual(21.6, result);
         }
 
         [Test]
         public void CountTotalSum_ThreeBooksButTwoEqual_ReturnSumWithDisc()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Order of the Phoenix"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
 
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(23.2));
+            Assert.AreEqual(23.2, result);
         }
 
         [Test]
         public void CountTotalSum_FourDiffBooks_ReturnSumWithDisc20Percent()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
@@ -109,13 +90,12 @@ namespace HarryPotterKata.Tests
             
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(25.6));
+            Assert.AreEqual(25.6, result);
         }
 
         [Test]
         public void CountTotalSum_FiveDiffBooks_ReturnSumWithDisc25Percent()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
@@ -123,14 +103,13 @@ namespace HarryPotterKata.Tests
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
 
             var result = basket.CountTotalSum(basket);
-
-            Assert.That(result, Is.EqualTo(30.0));
+            
+            Assert.AreEqual(30.0, result);
         }
 
         [Test]
         public void CountTotalSum_FiveBooksButTwoEqual_ReturnSumWithDisc25Percent()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
@@ -139,21 +118,18 @@ namespace HarryPotterKata.Tests
 
             var result = basket.CountTotalSum(basket);
 
-            Assert.That(result, Is.EqualTo(33.6));
+            Assert.AreEqual(33.6, result);
         }
 
         [Test]
         public void CountTotalSum_EmptyBasket_ReturnArgumentNullException()
         {
-            var basket = new Basket();
-
-            Assert.That(() => basket.CountTotalSum(basket), Throws.ArgumentNullException);
+            Assert.Throws<ArgumentNullException>(() => basket.CountTotalSum(basket));
         }
 
         [Test]
         public void CountTotalSum_MoreThanFiveGroupsInBasket_ReturnMoreThanFiveGroupsException()
         {
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));
@@ -161,8 +137,7 @@ namespace HarryPotterKata.Tests
             basket.Books.Add(new Book("Harry Potter and the Sorcerer’s Stone"));
             basket.Books.Add(new Book("Harry Potter and the Deathly Hallows"));
 
-            Assert.That(() => basket.CountTotalSum(basket), 
-                Throws.Exception.TypeOf<MoreThanFiveGroupsException>());
+            Assert.Throws<MoreThanFiveGroupsException>(() => basket.CountTotalSum(basket));
         }
 
         [Test]
@@ -188,8 +163,6 @@ namespace HarryPotterKata.Tests
                     new Book("Harry Potter and the Order of the Phoenix")
                 }),
             };
-
-            var basket = new Basket();
             basket.Books.Add(new Book("Harry Potter and the Chamber of Secrets"));
             basket.Books.Add(new Book("Harry Potter and the Prisoner of Azkaban"));
             basket.Books.Add(new Book("Harry Potter and the Goblet of Fire"));

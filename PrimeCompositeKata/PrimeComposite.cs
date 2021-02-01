@@ -4,13 +4,8 @@ namespace PrimeCompositeKata
 {
     public class PrimeComposite
     {
-        public static string GetOutput<T>(T input)
+        public static string GetOutput(int number)
         {
-            if (typeof(T) != typeof(int))
-            {
-                throw new ValueIsNotOfIntTypeException("Value can be only of integer type");
-            }
-            var number = Convert.ToInt32(input);
             if (number < 1 || number > 100)
             {
                 throw new ValueIsNotInRangeException("Value can be between 1 and 100");

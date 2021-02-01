@@ -4,15 +4,8 @@ namespace FizzBuzzKata
 {
     public class FizzBuzz
     {
-        public static string FizzBuzzMethod<T>(T input)
+        public static string FizzBuzzMethod(int number)
         {
-            int number = 0;
-            if (typeof(T) != typeof(int))
-            {
-                throw new NonIntTypeException("Value can be only an integer");
-            }
-            number = Convert.ToInt32(input);
-
             if (number < 1 || number > 100)
                 throw new ValueIsNotInRangeException("Value can be only between 1 and 100");
 
